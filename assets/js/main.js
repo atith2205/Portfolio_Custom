@@ -245,53 +245,150 @@
   /**
    * Skills dropdown functionality
    */
-  (function initSkillsDropdowns() {
-    const dropdowns = document.querySelectorAll(
-      ".skills-dropdown-container .dropdown"
-    );
+  // (function initSkillsDropdowns() {
+  //   const dropdowns = document.querySelectorAll(
+  //     ".skills-dropdown-container .dropdown"
+  //   );
 
-    if (dropdowns.length) {
-      dropdowns.forEach((dropdown) => {
-        const dropbtn = dropdown.querySelector(".dropbtn");
-        const dropdownContent = dropdown.querySelector(".dropdown-content");
-        const icon = dropbtn.querySelector("i");
+  //   if (dropdowns.length) {
+  //     dropdowns.forEach((dropdown) => {
+  //       const dropbtn = dropdown.querySelector(".dropbtn");
+  //       const dropdownContent = dropdown.querySelector(".dropdown-content");
+  //       const icon = dropbtn.querySelector("i");
 
-        dropbtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          dropdownContent.classList.toggle("show");
-          icon.classList.toggle("rotate");
+  //       dropbtn.addEventListener("click", function (e) {
+  //         e.stopPropagation();
+  //         dropdownContent.classList.toggle("show");
+  //         icon.classList.toggle("rotate");
 
-          dropdowns.forEach((otherDropdown) => {
-            if (otherDropdown !== dropdown) {
-              otherDropdown
-                .querySelector(".dropdown-content")
-                .classList.remove("show");
-              otherDropdown
-                .querySelector(".dropbtn i")
-                .classList.remove("rotate");
-            }
-          });
-        });
+  //         dropdowns.forEach((otherDropdown) => {
+  //           if (otherDropdown !== dropdown) {
+  //             otherDropdown
+  //               .querySelector(".dropdown-content")
+  //               .classList.remove("show");
+  //             otherDropdown
+  //               .querySelector(".dropbtn i")
+  //               .classList.remove("rotate");
+  //           }
+  //         });
+  //       });
+  //     });
+
+  //     document.addEventListener("click", function () {
+  //       document
+  //         .querySelectorAll(".skills-dropdown-container .dropdown-content.show")
+  //         .forEach((dropdown) => {
+  //           dropdown.classList.remove("show");
+  //           dropdown.previousElementSibling
+  //             .querySelector("i")
+  //             .classList.remove("rotate");
+  //         });
+  //     });
+
+  //     document
+  //       .querySelectorAll(".skills-dropdown-container .dropdown-content")
+  //       .forEach((content) => {
+  //         content.addEventListener("click", function (e) {
+  //           e.stopPropagation();
+  //         });
+  //       });
+  //   }
+  // })();
+
+  /**
+   * Skills dropdown functionality with toggle all
+   */
+  const skillsDropdowns = document.querySelectorAll(
+    ".skills-dropdown-container .dropdown"
+  );
+  const toggleAllBtn = document.getElementById("toggleAllBtn");
+  let allOpen = false;
+
+  if (skillsDropdowns.length > 0) {
+    // Individual dropdown functionality
+    skillsDropdowns.forEach((dropdown) => {
+      const dropbtn = dropdown.querySelector(".dropbtn");
+      const dropdownContent = dropdown.querySelector(".dropdown-content");
+      const icon = dropbtn.querySelector("i");
+
+      dropbtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        toggleDropdown(dropdownContent, icon);
+        updateToggleAllButton();
       });
+    });
 
-      document.addEventListener("click", function () {
-        document
-          .querySelectorAll(".skills-dropdown-container .dropdown-content.show")
-          .forEach((dropdown) => {
-            dropdown.classList.remove("show");
-            dropdown.previousElementSibling
-              .querySelector("i")
-              .classList.remove("rotate");
-          });
-      });
+    // Toggle All button functionality
+    if (toggleAllBtn) {
+      toggleAllBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        allOpen = !allOpen;
 
-      document
-        .querySelectorAll(".skills-dropdown-container .dropdown-content")
-        .forEach((content) => {
-          content.addEventListener("click", function (e) {
-            e.stopPropagation();
-          });
+        skillsDropdowns.forEach((dropdown) => {
+          const content = dropdown.querySelector(".dropdown-content");
+          const icon = dropdown.querySelector(".dropbtn i");
+
+          if (allOpen) {
+            content.classList.add("show");
+            icon.classList.add("rotate");
+          } else {
+            content.classList.remove("show");
+            icon.classList.remove("rotate");
+          }
         });
+
+        toggleAllBtn.textContent = allOpen ? "Close All" : "Open All";
+      });
     }
-  })();
+
+    // Close all when clicking outside
+    document.addEventListener("click", function () {
+      const openDropdowns = document.querySelectorAll(
+        ".skills-dropdown-container .dropdown-content.show"
+      );
+      if (openDropdowns.length > 0) {
+        openDropdowns.forEach((dropdown) => {
+          dropdown.classList.remove("show");
+          dropdown.previousElementSibling
+            .querySelector("i")
+            .classList.remove("rotate");
+        });
+        allOpen = false;
+        if (toggleAllBtn) toggleAllBtn.textContent = "Open All";
+      }
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    document
+      .querySelectorAll(".skills-dropdown-container .dropdown-content")
+      .forEach((content) => {
+        content.addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
+      });
+  }
+
+  // Helper function to toggle individual dropdowns
+  function toggleDropdown(content, icon) {
+    content.classList.toggle("show");
+    icon.classList.toggle("rotate");
+  }
+
+  // Helper function to update toggle all button state
+  function updateToggleAllButton() {
+    if (!toggleAllBtn) return;
+
+    const openCount = document.querySelectorAll(
+      ".skills-dropdown-container .dropdown-content.show"
+    ).length;
+    const totalCount = skillsDropdowns.length;
+
+    if (openCount === totalCount) {
+      allOpen = true;
+      toggleAllBtn.textContent = "Close All";
+    } else if (openCount === 0) {
+      allOpen = false;
+      toggleAllBtn.textContent = "Open All";
+    }
+  }
 })();

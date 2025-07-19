@@ -864,6 +864,24 @@ section,
   transform: rotate(180deg);
 }
 
+/* Toggle All Button Styles */
+.toggle-all-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--heading-font);
+}
+
+.toggle-all-btn:hover {
+  background-color: var(--heading-color);
+  transform: translateY(-2px);
+}
+
 /*--------------------------------------------------------------
 # Resume Section
 --------------------------------------------------------------*/
