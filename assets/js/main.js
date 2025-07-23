@@ -243,59 +243,6 @@
   document.addEventListener("scroll", navmenuScrollspy);
 
   /**
-   * Skills dropdown functionality
-   */
-  // (function initSkillsDropdowns() {
-  //   const dropdowns = document.querySelectorAll(
-  //     ".skills-dropdown-container .dropdown"
-  //   );
-
-  //   if (dropdowns.length) {
-  //     dropdowns.forEach((dropdown) => {
-  //       const dropbtn = dropdown.querySelector(".dropbtn");
-  //       const dropdownContent = dropdown.querySelector(".dropdown-content");
-  //       const icon = dropbtn.querySelector("i");
-
-  //       dropbtn.addEventListener("click", function (e) {
-  //         e.stopPropagation();
-  //         dropdownContent.classList.toggle("show");
-  //         icon.classList.toggle("rotate");
-
-  //         dropdowns.forEach((otherDropdown) => {
-  //           if (otherDropdown !== dropdown) {
-  //             otherDropdown
-  //               .querySelector(".dropdown-content")
-  //               .classList.remove("show");
-  //             otherDropdown
-  //               .querySelector(".dropbtn i")
-  //               .classList.remove("rotate");
-  //           }
-  //         });
-  //       });
-  //     });
-
-  //     document.addEventListener("click", function () {
-  //       document
-  //         .querySelectorAll(".skills-dropdown-container .dropdown-content.show")
-  //         .forEach((dropdown) => {
-  //           dropdown.classList.remove("show");
-  //           dropdown.previousElementSibling
-  //             .querySelector("i")
-  //             .classList.remove("rotate");
-  //         });
-  //     });
-
-  //     document
-  //       .querySelectorAll(".skills-dropdown-container .dropdown-content")
-  //       .forEach((content) => {
-  //         content.addEventListener("click", function (e) {
-  //           e.stopPropagation();
-  //         });
-  //       });
-  //   }
-  // })();
-
-  /**
    * Skills dropdown functionality with toggle all
    */
   const skillsDropdowns = document.querySelectorAll(

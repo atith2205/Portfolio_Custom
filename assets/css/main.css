@@ -1055,13 +1055,13 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Services Section
+# certificates Section
 --------------------------------------------------------------*/
-.services .service-item {
+.certificates .certificates-item {
   position: relative;
 }
 
-.services .service-item .icon {
+.certificates .certificates-item .icon {
   background: var(--accent-color);
   display: flex;
   align-items: center;
@@ -1074,35 +1074,35 @@ section,
   margin-right: 20px;
 }
 
-.services .service-item .icon i {
+.certificates .certificates-item .icon i {
   color: var(--contrast-color);
   font-size: 24px;
   line-height: 0;
 }
 
-.services .service-item:hover .icon {
+.certificates .certificates-item:hover .icon {
   background: var(--surface-color);
 }
 
-.services .service-item:hover .icon i {
+.certificates .certificates-item:hover .icon i {
   color: var(--accent-color);
 }
 
-.services .service-item .title {
+.certificates .certificates-item .title {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
 }
 
-.services .service-item .title a {
+.certificates .certificates-item .title a {
   color: var(--heading-color);
 }
 
-.services .service-item .title a:hover {
+.certificates .certificates-item .title a:hover {
   color: var(--accent-color);
 }
 
-.services .service-item .description {
+.certificates .certificates-item .description {
   line-height: 24px;
   font-size: 14px;
 }
