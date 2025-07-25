@@ -1094,6 +1094,19 @@ section,
   font-size: 18px;
 }
 
+.certificates .certificates-item .certificate-letter {
+  color: var(--contrast-color);
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: var(--heading-font);
+}
+
+/* Update the hover effect */
+.certificates .certificates-item:hover .certificate-letter {
+  color: var(--accent-color);
+}
+
 .certificates .certificates-item .title a {
   color: var(--heading-color);
 }
