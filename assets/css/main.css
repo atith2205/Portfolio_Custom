@@ -738,8 +738,14 @@ section,
 
 /* Skills Dropdown Styles */
 .skills-dropdown-container {
+  /* max-width: 800px;
+  margin: 0 auto 30px; */
+
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto 30px; /* Centers + bottom margin */
+  padding: 0 8px; /* Inner spacing (left/right) */
+  width: calc(100% - 16px); /* Compensates for padding */
+  box-sizing: border-box; /* Prevents overflow */
 }
 
 .dropdown {
