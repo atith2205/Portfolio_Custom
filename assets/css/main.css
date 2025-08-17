@@ -1464,3 +1464,33 @@ section,
 /* .starter-section { */
 /* Add your styles here */
 /* } */
+
+/*--------------------------------------------------------------
+# Connect Me Section
+--------------------------------------------------------------*/
+/* Contact Form - Rounded Corners */
+#contact .php-email-form input.form-control,
+#contact .php-email-form textarea.form-control {
+  border-radius: 8px !important;
+  border: 1px solid #ced4da !important; /* Optional: ensures border exists */
+  padding: 10px 15px !important; /* Better spacing */
+}
+
+#contact .php-email-form button[type="submit"] {
+  border-radius: 8px !important;
+  padding: 10px 30px !important; /* Better button size */
+}
+
+/* Status messages */
+#contact .php-email-form .loading,
+#contact .php-email-form .error-message,
+#contact .php-email-form .sent-message {
+  border-radius: 8px !important;
+}
+
+/* Focus states */
+#contact .php-email-form input.form-control:focus,
+#contact .php-email-form textarea.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+  border-color: #86b7fe !important;
+}
